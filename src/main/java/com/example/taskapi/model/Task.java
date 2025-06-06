@@ -1,21 +1,34 @@
 package com.example.taskapi.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "tasks")
 public class Task {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//Autoincremental
 	private Long id;
 	
-	@Column(nullable = false) //No permite valores nulos
+	@NotBlank(message = "El título es obligatorio")
 	private String title;
 	
-	@Column(length = 500)//Limite a 500 caracteres
+	@Size(max = 500,message = "La descripción no puede superar los 500 caracteres")//Limite a 500 caracteres
 	private String description;
 	
 	private boolean completed;
+	
+	@FutureOrPresent(message = "La fecha límite debe ser hoy o posterior")
+	private LocalDate dueDate;
+	
+	@Enumerated(EnumType.STRING)
+	private TaskStatus status;
+	
+	
 
 	public Long getId() {
 		return id;
@@ -48,6 +61,24 @@ public class Task {
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
 	}
+
+	public LocalDate getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(LocalDate dueDate) {
+		this.dueDate = dueDate;
+	}
+
+	public TaskStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(TaskStatus status) {
+		this.status = status;
+	}
+	
+	
 	
 	
 
