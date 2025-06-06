@@ -6,9 +6,13 @@ Este es un proyecto básico que implementa una **API RESTful** usando **Spring B
 
 - ✅ Listar todas las tareas (`GET /tasks`)
 - ✅ Crear nuevas tareas (`POST /tasks`)
+- ✅ Obtener tarea por ID (`GET /tasks/{id}`)
 - ✅ Actualizar tareas existentes (`PUT /tasks/{id}`)
 - ✅ Eliminar tareas (`DELETE /tasks/{id}`)
-- ❗ Manejo de errores estructurado y personalizado
+- ✅ Filtros por estado (`GET /tasks?status=PENDIENTE`)
+- ✅ Validación automática con `@Valid`
+- ✅ Documentación con Swagger UI
+- ✅ Manejo de errores estructurado
 
 ## 🛠 Tecnologías usadas
 
@@ -34,15 +38,21 @@ Este es un proyecto básico que implementa una **API RESTful** usando **Spring B
     ```bash
     http://localhost:8080/h2-console
     JDBC URL: jdbc:h2:mem:taskdb
+5. Documentacion interactiva:
+   ```bash
+   http://localhost:8080/swagger-ui/index.html
 
 ## Endpionts disponibles
 
 | METODO  | ENDPOINT  | Descripcion |
 |--------------|--------------|--------------|
 | GET | /tasks | Lista todas las tareas |
+| GET | /tasks/{id} | Obtiene una tarea por ID |
 | POST | /tasks | Crea una nueva tarea |
-| GET | /tasks/{id} | Obtener una tarea por ID |
 | PUT | /tasks/{id} | Actualiza una tarea |
+| DELETE | /tasks/{id} | Eliminar una tarea |
+| GET | /tasks/completes | Tareas completadas |
+| GET | /tasks/incomplete | Tareas incompletas |
 
-✍️ Autor
-Juan Manuel Vázquez Santiago
+🙌 Créditos
+Proyecto desarrollado por Juan Manuel Vazquez Santiago como parte de mi aprendizaje en desarrollo backend en Java.
